@@ -38,8 +38,8 @@ void Person::writeFile() {
 		cout << "ingrese codigo zip: \n";
 		cin >> x.zipcode;
 		strcat_s(x.zipcode, sizeof(x.zipcode), ";\r\n");
-
-		personasOut << x.fisrtname << "\r\n" << x.lastname << "\r\n" << x.address << "\r\n" << x.city << "\r\n" << x.state << "\r\n" << x.zipcode << "\r\n";
+		
+		personasOut << x.fisrtname << "\t" << x.lastname << "\t" << x.address << "\t" << x.city << "\t" << x.state << "\t" << x.zipcode << "\t";
 	}
 
 	personasOut.close();
@@ -52,15 +52,23 @@ void Person::readFile() {
 		cout << "error al abrir el archivo!!!";
 		return;
 	}
-	Personaa x;
+	string palabra="0";
 	
 	cout << "**********************Consulta de personas**********************\n\n";
 	//cout << "Primer Nombre" << "|" << "Apellido" << "|" << "Direccion" << "|" << "Cuidad" << "|" << "Estado" << "|" << "ZipCode"<<"\n";
 
-	while (personIn >> FirstName >> LastName >> Address >> City >> State >> ZipCode) {
+	/*while (personIn >> FirstName >> LastName >> Address >> City >> State >> ZipCode) {
 		
 		cout <<"Primer Nombre: "<<FirstName << "\n"<<"Apellido: "<< LastName << "\n"<< "Dirreccio: "<< Address << "\n"<<
 			"Cuidad: " << City << "\n"<<"Departamento: " << State << "\n"<<"Codigo postal: " << ZipCode << "\r\n";
+	}*/
+	cout << "Primer Nombre: "<<"\t" << "Apellido: " << "\t" << "Dirreccio: " <<"\t" <<
+		"Cuidad: "<< "\t" << "Departamento: "<< "\t" << "Codigo postal: "<< "\n";
+
+	while (getline(personIn,palabra,';')) {
+		
+		cout << palabra<<"\t\t";
+
 	}
 
 	personIn.close();
